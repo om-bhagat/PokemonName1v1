@@ -1,0 +1,7 @@
+{
+  "cleanUrls": true,
+  "rewrites": [
+    { "source": "/pokemon-duel", "destination": "/pokemon-duel/index.html" },
+    { "source": "/person-vs-robot", "destination": "/person-vs-robot/index.html" }
+  ]
+}
