@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 {
   "cleanUrls": true,
   "rewrites": [
@@ -5,3 +6,14 @@
     { "source": "/person-vs-robot", "destination": "/person-vs-robot/index.html" }
   ]
 }
+=======
+{
+    "rewrites": [
+         { "source": "/pokemon-duel", "destination": "/pokemon-duel/index.html"},
+         { "source": "pokemon-duel/", "destination": "/pokemon-duel/index.html"},
+         { "source": "/person-vs-robot", "destionation": "/person-vs-robot/index.html"},
+         { "source": "/person-vs-robot/", "destionation": "/person-vs-robot/index.html"}
+
+    ]
+}
+>>>>>>> af527c3 (Add vercel.json and fix routing)

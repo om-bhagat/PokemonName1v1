@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Pokemon Duel - You vs Robot</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Pokemon Name duel: You vs robot</h1>
+    <h2>You will be playing against a robot that knows every Pokemon from Gen 1 to Gen 9.</h2>
+
+    <div id="scoreboard">
+        <span id="player1-score">Player: 0</span>
+        <span id="player2-score">Robot: 0</span>
+    </div>
+
+    <div id="turn">Your Turn</div>
+
+    <input id="pokemonInput" type="text" placeholder="Enter a Pokemon" />
+    <button onclick="submitPokemon()">Submit</button>
+
+    <div id="timer-container">
+        <div id="timer-bar"></div>
+    </div>
+    <div id="timer-text">Time left: 10</div>
+    <div id="usedList"></div>
+    <div id ="result"></div>
+    <button onclick="location.href='../index.html'">Back to Home</button>
+
+    <!--  Only one script tag, placed at the bottom -->
+    <script src="script.js"></script>
+</body>
+</html>
