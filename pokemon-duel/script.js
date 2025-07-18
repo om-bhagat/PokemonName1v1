@@ -54,20 +54,18 @@ let player2Score = 0;
 let timer;
 let timeLeft = 10;
 
-document.addEventListener("DOMContentLoaded", () => {
-  // ✅ Adjust path to the correct location
-  fetch('/pokedex.json') // use '../pokedex.json' if this fails on Vercel
-    .then(response => response.json())
-    .then(data => {
-      pokemonList = data.map(name => name.toLowerCase());
-    })
-    .catch(err => {
-      console.error("Error loading pokedex.json:", err);
-    });
+// Load Pokémon list from pokedex.json in root folder
+fetch("../pokedex.json")
+  .then(res => res.json())
+  .then(data => {
+    pokemonList = data.map(p => p.toLowerCase());
+  })
+  .catch(err => {
+    console.error("Failed to load pokedex.json:", err);
+    document.getElementById("result").textContent = "Error loading Pokémon list.";
+  });
 
-  // ✅ Make function globally accessible
-  window.submitPokemon = submitPokemon;
-});
+document.getElementById("submitBtn").addEventListener("click", submitPokemon);
 
 function submitPokemon() {
   const input = document.getElementById("pokemonInput");
@@ -75,17 +73,17 @@ function submitPokemon() {
   const result = document.getElementById("result");
 
   if (!name) {
-    result.textContent = "Please enter a Pokemon name";
+    result.textContent = "Please enter a Pokémon name.";
     return;
   }
 
   if (!pokemonList.includes(name)) {
-    result.textContent = `${input.value} is not a Pokemon! Player ${currentPlayer} loses!`;
+    result.textContent = `"${input.value}" is not a valid Pokémon. Player ${currentPlayer} loses!`;
     return;
   }
 
   if (usedPokemon.includes(name)) {
-    result.textContent = `${input.value} was already used! Player ${currentPlayer} loses!`;
+    result.textContent = `"${input.value}" was already used! Player ${currentPlayer} loses!`;
     return;
   }
 
@@ -102,15 +100,15 @@ function submitPokemon() {
   document.getElementById("usedList").textContent = "Used: " + usedPokemon.join(", ");
   currentPlayer = currentPlayer === 1 ? 2 : 1;
   document.getElementById("turn").textContent = `Player ${currentPlayer}'s Turn`;
-  document.getElementById("pokemonInput").disabled = false;
-  document.getElementById("pokemonInput").focus();
   input.value = "";
+  input.disabled = false;
+  input.focus();
   result.textContent = "";
   startTimer();
 }
 
 function startTimer() {
-  clearInterval(timer); // stop previous timer if running
+  clearInterval(timer);
   timeLeft = 10;
 
   const timerBar = document.getElementById("timer-bar");
@@ -128,7 +126,7 @@ function startTimer() {
 
     if (timeLeft <= 0) {
       clearInterval(timer);
-      timerText.textContent = `Time's up!`;
+      timerText.textContent = "Time's up!";
       document.getElementById("result").textContent = `Time's up! Player ${currentPlayer} loses!`;
       document.getElementById("pokemonInput").disabled = true;
     }
