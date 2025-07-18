@@ -7,7 +7,7 @@ let player2Score = 0;
 let timer;
 let timeLeft = 10;
 
-fetch('data/pokedex.json')
+fetch("pokedex.json")
   .then(res => res.json())
   .then(data => {
     pokemonList = data.map(name => name.toLowerCase());

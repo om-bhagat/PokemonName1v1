@@ -3,7 +3,7 @@ let currentPlayer = 1;
 
 let pokemonList = [];
 
-fetch('data/pokedex.json')
+fetch("pokedex.json")
   .then(response => response.json())
   .then(data => {
     pokemonList = data.map(name => name.toLowerCase());
